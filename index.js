@@ -5,15 +5,17 @@ import axios from "axios";
 require('dotenv').config(); 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+// const DATABASE_URL = "postgres://postgres:postgres@localhost:5432/book_collection";
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
+  // user: "postgres",
+  // host: "localhost",
+  connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
-  database: "book_collection",
-  password: "postgres",
-  port: 5432,
+  // database: "book_collection",
+  // password: "postgres",
+  // port: 5432,
 });
 db.connect();
 
