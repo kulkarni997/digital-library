@@ -67,10 +67,15 @@ app.post("/books/add", async (req, res) => {
   const { title, author, isbn, cover_url, rating, review } = req.body;
 
   try {
+    // await db.query(
+    //   "INSERT INTO books (title, author, isbn, cover_url, rating, review) VALUES ($1, $2, $3, $4, $5, $6)",
+    //   [title, author, isbn || null, cover_url || null, rating, review || null]
+    // );
     await db.query(
-      "INSERT INTO books (title, author, isbn, cover_url, rating, review) VALUES ($1, $2, $3, $4, $5, $6)",
-      [title, author, isbn || null, cover_url || null, rating, review || null]
-    );
+  "INSERT INTO books (title, author, isbn, cover_url, rating, review, is_tbr) VALUES ($1, $2, $3, $4, $5, $6, false)",
+  [title, author, isbn || null, cover_url || null, rating, review || null]
+);
+
     res.redirect("/");
   } catch (error) {
     console.error(error);
@@ -101,10 +106,15 @@ app.post("/books/add-by-isbn", async (req, res) => {
       : "Unknown Author";
 
     // Insert into your DB with default rating and empty review
+    // await db.query(
+    //   "INSERT INTO books (title, author, isbn, cover_url, rating, review) VALUES ($1, $2, $3, $4, $5, $6)",
+    //   [title, author, isbn, coverUrl, null, null]
+    // );
     await db.query(
-      "INSERT INTO books (title, author, isbn, cover_url, rating, review) VALUES ($1, $2, $3, $4, $5, $6)",
-      [title, author, isbn, coverUrl, null, null]
-    );
+  "INSERT INTO books (title, author, isbn, cover_url, rating, review, is_tbr) VALUES ($1, $2, $3, $4, $5, $6, false)",
+  [title, author, isbn, coverUrl, null, null]
+);
+
 
     res.redirect("/");
   } catch (error) {
