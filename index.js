@@ -9,18 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const db = new pg.Client({
-  // user: "postgres",
-  // host: "localhost",
   connectionString: process.env.DATABASE_URL,
-  // ssl: { rejectUnauthorized: false },
-  // database: "book_collection",
-  // password: "postgres",
-  // port: 5432,
-  //  user: process.env.PGUSER,
-  // host: process.env.PGHOST,
-  // database: process.env.PGDATABASE,
-  // password: process.env.PGPASSWORD,
-  // port: process.env.PGPORT,
   ssl: {
     rejectUnauthorized: false, 
   },
@@ -33,21 +22,41 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 
+// app.get("/", async (req, res) => {
+//   try {
+//     const result = await db.query("SELECT * FROM books WHERE is_tbr = false");
+//     const books = await Promise.all(result.rows.map(async (book) => {
+//       // Construct Open Library cover URL from ISBN
+//       const coverUrl = book.isbn 
+//         ? `https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`
+//         : null;
+//         return {
+//         ...book,
+//         cover_url: coverUrl || book.cover_url,
+//       };
+//     }));
+//     const totalBooks = books.length;
+//     res.render("index.ejs", { books:result.rows, totalBooks});
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Error loading books');
+//   }
+// });
+
 app.get("/", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM books WHERE is_tbr = false");
     const books = await Promise.all(result.rows.map(async (book) => {
-      // Construct Open Library cover URL from ISBN
       const coverUrl = book.isbn 
         ? `https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`
         : null;
-        return {
+      return {
         ...book,
         cover_url: coverUrl || book.cover_url,
       };
     }));
     const totalBooks = books.length;
-    res.render("index.ejs", { books:result.rows, totalBooks});
+    res.render("index.ejs", { books, totalBooks });  // Fixed this line
   } catch (error) {
     console.error(error);
     res.status(500).send('Error loading books');
