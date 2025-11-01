@@ -7,21 +7,20 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-// const DATABASE_URL = "postgres://postgres:postgres@localhost:5432/book_collection";
 
 const db = new pg.Client({
   // user: "postgres",
   // host: "localhost",
-  // connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
   // ssl: { rejectUnauthorized: false },
   // database: "book_collection",
   // password: "postgres",
   // port: 5432,
-   user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-  password: process.env.PGPASSWORD,
-  port: process.env.PGPORT,
+  //  user: process.env.PGUSER,
+  // host: process.env.PGHOST,
+  // database: process.env.PGDATABASE,
+  // password: process.env.PGPASSWORD,
+  // port: process.env.PGPORT,
   ssl: {
     rejectUnauthorized: false, 
   },
@@ -36,7 +35,6 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   try {
-    // const result = await db.query("SELECT * FROM books");
     const result = await db.query("SELECT * FROM books WHERE is_tbr = false");
     const books = await Promise.all(result.rows.map(async (book) => {
       // Construct Open Library cover URL from ISBN
