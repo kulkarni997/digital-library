@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My To Be Read (TBR) List</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>My To Be Read (TBR) List</h1>
+    <!-- Your TBR entry form and list here -->
+  </div>
+
+<!-- <div class="books-list">
+  <% if (books.length === 0) { %>
+    <p>No books in TBR list.</p>
+  <% } %> -->
+
+  <form action="/tbr/add" method="POST" style="margin-bottom:2rem;">
+  <input type="text" name="title" placeholder="Book Title" required>
+  <input type="text" name="author" placeholder="Author" required>
+  <button type="submit">Add to TBR</button>
+</form>
+
+<div class="books-list">
+  <% if (books.length === 0) { %>
+    <p>No books in TBR list.</p>
+  <% } %>
+
+  <% books.forEach(book => { %>
+    <div class="book-card">
+      <div class="book-title"><%= book.title %></div>
+      <div class="book-author">by <%= book.author %></div>
+      <!-- Add other details -->
+
+      <form action="/tbr/move-to-read/<%= book.id %>" method="POST">
+        <button type="submit">Mark as Read</button>
+      </form>
+    </div>
+  <% }) %>
+</div>
+<button class="delete-button"><a href="/">Home (Read Books)</a> </button>
+</body>
+</html>
