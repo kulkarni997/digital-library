@@ -160,7 +160,7 @@ app.post('/books/delete/:id', async (req, res) => {
     await db.query('DELETE FROM books WHERE id = $1', [bookId]);
     res.redirect('/');
   } catch (error) {
-    res.status(500).send('Error deleting book');
+    res.status(500).send('Error deleting book'+ error.message);
   }
 });
 
