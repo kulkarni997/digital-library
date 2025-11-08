@@ -61,6 +61,16 @@ h1 {
   color: #3a2a00;
 }
 
+form.edit-form {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline !important; /* keeps it compact */
+}
+
+
 
 form {
   margin-bottom: 2rem;
