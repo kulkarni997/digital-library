@@ -22,11 +22,11 @@ h1 {
   color: #cba135;
   text-shadow: 1px 1px 2px #5a3e1b;
 }
-
 .button-container {
   display: flex;
-  gap: 10px; /* space between buttons */
+  gap: 10px;
   align-items: center;
+  border: none;  /* Remove any border from container */
 }
 
 
@@ -42,26 +42,29 @@ h1 {
   font-weight: 500;
   color: #d6b760;
 }
-
 .delete-button{
-  /* margin-top: 1.5rem;  Remove this */
   padding: 0.75rem 2rem;
   background: #b58a1b;  
   border: none;
+  outline: none;  /* Removes focus outline */
   border-radius: 20px;
   color: #422e00; 
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(181, 138, 27, 0.3);
+  box-shadow: none;  /* Remove all shadow/glow */
   transition: background 0.3s ease; 
-  outline: none;
 }
-  
+
+.delete-button:focus {
+  outline: none;  /* Ensures no outline on focus/click */
+  box-shadow: none;  /* No glow when focused */
+}
 
 .delete-button:hover {
   background: #d6b760;
   color: #3a2a00;
 }
+
 
 form {
   margin-bottom: 2rem;
