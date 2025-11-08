@@ -42,18 +42,14 @@ h1 {
   font-weight: 500;
   color: #d6b760;
 }
-.delete-button{
-  padding: 0.75rem 2rem;
-  background: #b58a1b;  
-  border: none;
-  outline: none;  /* Removes focus outline */
-  border-radius: 20px;
-  color: #422e00; 
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: none;  /* Remove all shadow/glow */
-  transition: background 0.3s ease; 
+.delete-form {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
+
 
 .delete-button:focus {
   outline: none;  /* Ensures no outline on focus/click */
