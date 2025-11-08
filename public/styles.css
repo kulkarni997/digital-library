@@ -80,6 +80,7 @@ form {
   box-shadow: 0 4px 15px rgba(165, 130, 45, 0.8);
   border: 1px solid #c8a449;
   color: #f0ddae;
+  margin-left:30px;
 }
 
 form label {
