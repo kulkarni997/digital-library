@@ -23,6 +23,13 @@ h1 {
   text-shadow: 1px 1px 2px #5a3e1b;
 }
 
+.button-container {
+  display: flex;
+  gap: 10px; /* space between buttons */
+  align-items: center;
+}
+
+
 .container {
   max-width: 900px;
   margin: 0 auto;
