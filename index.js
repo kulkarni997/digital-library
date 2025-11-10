@@ -208,5 +208,5 @@ app.post("/tbr/move-to-read/:id", async (req, res) => {
 
 
 app.listen(port,'0.0.0.0', ()=>{
-    console.log(`app is running at port ${port} succesfully`);
+    console.log(`app is running at port ${port} succesfully!!`);
 })
