@@ -1,4 +1,4 @@
-A Demo website to align my full stack web development skills and revise
+A Demo website to align my full stack web development skills and revise the concepts and bring them altogether
 
 Front end : HTML, CSS, JavaScript. Ejs files are made to connect to the backend 
 Backend : NodeJs, ExpressJs to connect the server, PostgreSQL for the database
