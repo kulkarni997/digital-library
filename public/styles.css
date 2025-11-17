@@ -24,9 +24,20 @@ h1 {
 }
 .button-container {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  border: none;  /* Remove any border from container */
+  justify-content: center;
+  border: none;
+  margin-top: 1rem;
+}
+
+.button-container form {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex;
 }
 
 
@@ -47,8 +58,7 @@ h1 {
   border: none !important;
   background: transparent !important;
   padding: 0 !important;
-  /* margin: 0 !important; */
-  margin-top: 30px;
+  margin: 0 !important;
 }
 
 
@@ -66,10 +76,8 @@ form.edit-form {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  /* padding: 0 !important; */
-  margin-left: 10px;
-  margin-top: 30px;
-  display: inline !important; /* keeps it compact */
+  margin: 0 !important;
+  display: inline-flex !important;
 }
 
 
